@@ -1,0 +1,138 @@
+RUN THE FOLLOWING COMMAND
+
+    pip list
+
+SHORT EXPLANATION:  shows which packages are installed in the  current environment
+
+OUTPUT:
+Package    Version
+---------- -------
+pip        21.2.4
+setuptools 41.2.0
+
+// shows two packages installed, both of which are included when python is installed.
+
+
+    deactivate 
+
+SHORT EXPLANATION:  deactivates the virtual environment
+
+OUTPUT:  none
+
+
+    pip3 list 
+
+(How is the result different from when you ran pip list with the virtualenv activated? Hint, you should not have as many things listed when the virtualenv is deactivated. If your results are the same, go back and figure out what went wrong.)
+
+SHORT EXPLANATION:  shows which packages are installed on the computer, outside of a virtual environment (but works inside virtual environment as well)
+
+OUTPUT:
+Package    Version
+---------- -------
+pip        21.2.4
+setuptools 57.0.0
+wheel      0.36.2
+
+//The package "wheel" appears on the main computer, it did not appear in the virtual environment.  The other two packages appeared both inside and outside of the virtual environment.  But inside the virtual environment and outside show different versions of the setuptools package; 57.0.0 vs41.2.0.  Initially, the versions of pip inside the virtual environment and outside showed different versions, and updating one did not update the other, but I already updated both earlier.
+
+
+    source py3Env/bin/activate
+
+SHORT EXPLANATION: this code activates the virtual environment "py3Env"
+
+OUTPUT:  none
+
+
+    pip install Django
+
+SHORT EXPLANATION: this code installs the Django framework into the virtual environment
+
+OUTPUT:
+Collecting Django
+  Downloading Django-3.2.7-py3-none-any.whl (7.9 MB)
+     |████████████████████████████████| 7.9 MB 1.5 MB/s 
+Collecting sqlparse>=0.2.2
+  Downloading sqlparse-0.4.1-py3-none-any.whl (42 kB)
+     |████████████████████████████████| 42 kB 2.7 MB/s 
+Collecting asgiref<4,>=3.3.2
+  Downloading asgiref-3.4.1-py3-none-any.whl (25 kB)
+Collecting pytz
+  Downloading pytz-2021.1-py2.py3-none-any.whl (510 kB)
+     |████████████████████████████████| 510 kB 17.7 MB/s 
+Installing collected packages: sqlparse, pytz, asgiref, Django
+Successfully installed Django-3.2.7 asgiref-3.4.1 pytz-2021.1 sqlparse-0.4.1
+
+//The command given in the Learn platform is:
+
+    "pip install Django==2.2"
+
+But when I ran that it crashed my terminal. I googled "pip install Django mac" to find this terminal command:
+
+    "python -m pip install Django" [though I changed "python -m..." to "python3 -m..."].  
+ 
+This code downloaded four separate packages and Django was successfully installed.  Later, I tried this shorter code:
+
+    "pip install Django"
+
+It worked fine.  Finally, I tried "pip install Django==2.2", again and it worked fine the second time.  Don't know why it failed and froze my terminal the first time.  But there was a difference; there were only 3 packages downloaded when I added "==2.2".  The "asgiref" package was missing.
+
+
+
+    pip freeze 
+    (What's the difference between freeze and list?)
+
+SHORT EXPLANATION:  both "pip list" and "pip freeze" show packages which have been installed, but the output format is slightly different, and "pip freeze" excludes the packages used for package management ("pip", "setuptools", and "wheel").  
+
+OUTPUT:
+asgiref==3.4.1
+Django==3.2.7
+pytz==2021.1
+sqlparse==0.4.1
+
+//The output format of "pip freeze" is the format needed for "requirements.txt", which is used for installing packages in bulk.
+
+
+    First cd into your Desktop directory (cd ~/Desktop), then run this command: 
+    pip freeze > requirements.txt. 
+
+SHORT EXPLANATION: This code creates a file "requirements.txt" in the current directory.
+
+OUTPUT: for pip freeze > requirements.txt, no output. For cat requirements.txt:
+asgiref==3.4.1
+Django==3.2.7
+pytz==2021.1
+sqlparse==0.4.1
+
+//The .txt file contains the exact same information that was output by the "pip freeze" command.  If I wanted to install all four of these packages in the Desktop directory at one time, I would use "pip install -r requirements.txt".
+
+
+    pip uninstall Django
+
+SHORT EXPLANATION:  This code uninstalls the Django package from the virtual environment, but the other three packages which were installed with it remain.
+
+OUTPUT:
+Successfully uninstalled Django-3.2.7
+
+
+    pip show Django
+
+SHORT EXPLANATION: This code shows the full list of installed files for each package
+
+OUTPUT:
+WARNING: Package(s) not found: Django
+
+//Because I just now uninstalled Django, there is nothing to show.   When I install Django==2.2 again and run the same code, it shows this:
+
+Name: Django
+Version: 2.2
+Summary: A high-level Python Web framework that encourages rapid development and clean, pragmatic design.
+Home-page: https://www.djangoproject.com/
+Author: Django Software Foundation
+Author-email: foundation@djangoproject.com
+License: BSD
+Location: /Users/michaelsduwors/Desktop/OneDrive/CODING DOJO/PythonStack/MyEnvironments/py3Env/lib/python3.8/site-packages
+Requires: pytz, sqlparse
+Required-by: 
+
+
+
