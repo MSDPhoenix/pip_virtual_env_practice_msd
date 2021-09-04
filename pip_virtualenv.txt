@@ -1,4 +1,4 @@
-RUN THE FOLLOWING COMMAND
+RUN THE FOLLOWING COMMAND:
 
     pip list
 
@@ -13,6 +13,9 @@ setuptools 41.2.0
 // shows two packages installed, both of which are included when python is installed.
 
 
+
+RUN THE FOLLOWING COMMAND:
+
     deactivate 
 
 SHORT EXPLANATION:  deactivates the virtual environment
@@ -20,9 +23,10 @@ SHORT EXPLANATION:  deactivates the virtual environment
 OUTPUT:  none
 
 
-    pip3 list 
 
-(How is the result different from when you ran pip list with the virtualenv activated? Hint, you should not have as many things listed when the virtualenv is deactivated. If your results are the same, go back and figure out what went wrong.)
+RUN THE FOLLOWING COMMAND:
+
+    pip3 list 
 
 SHORT EXPLANATION:  shows which packages are installed on the computer, outside of a virtual environment (but works inside virtual environment as well)
 
@@ -33,8 +37,11 @@ pip        21.2.4
 setuptools 57.0.0
 wheel      0.36.2
 
-//The package "wheel" appears on the main computer, it did not appear in the virtual environment.  The other two packages appeared both inside and outside of the virtual environment.  But inside the virtual environment and outside show different versions of the setuptools package; 57.0.0 vs41.2.0.  Initially, the versions of pip inside the virtual environment and outside showed different versions, and updating one did not update the other, but I already updated both earlier.
+//The package "wheel" appears on the main computer, it did not appear in the virtual environment.  The other two packages appeared both inside and outside of the virtual environment.  But inside the virtual environment and outside show different versions of the "setuptools" package; 57.0.0 vs41.2.0.  Initially, the versions of pip inside the virtual environment and outside showed different versions, and updating one did not update the other, but I already updated both earlier.
 
+
+
+RUN THE FOLLOWING COMMAND:
 
     source py3Env/bin/activate
 
@@ -42,6 +49,9 @@ SHORT EXPLANATION: this code activates the virtual environment "py3Env"
 
 OUTPUT:  none
 
+
+
+RUN THE FOLLOWING COMMAND:
 
     pip install Django
 
@@ -74,9 +84,12 @@ This code downloaded four separate packages and Django was successfully installe
 
     "pip install Django"
 
-It worked fine.  Finally, I tried "pip install Django==2.2", again and it worked fine the second time.  Don't know why it failed and froze my terminal the first time.  But there was a difference; there were only 3 packages downloaded when I added "==2.2".  The "asgiref" package was missing.
+It worked fine.  Finally, I tried the original code from the platform again [ "pip install Django==2.2" ], and it worked fine the second time.  Don't know why it failed and froze my terminal the first time.  But there was a difference; there were only 3 packages downloaded when I added "==2.2".  The "asgiref" package was missing.
 
 
+
+
+RUN THE FOLLOWING COMMAND:
 
     pip freeze 
     (What's the difference between freeze and list?)
@@ -92,12 +105,14 @@ sqlparse==0.4.1
 //The output format of "pip freeze" is the format needed for "requirements.txt", which is used for installing packages in bulk.
 
 
-    First cd into your Desktop directory (cd ~/Desktop), then run this command: 
+
+RUN THE FOLLOWING COMMAND:
+
     pip freeze > requirements.txt. 
 
 SHORT EXPLANATION: This code creates a file "requirements.txt" in the current directory.
 
-OUTPUT: for pip freeze > requirements.txt, no output. For cat requirements.txt:
+OUTPUT: for pip freeze > requirements.txt, no output. For "cat requirements.txt":
 asgiref==3.4.1
 Django==3.2.7
 pytz==2021.1
@@ -106,6 +121,9 @@ sqlparse==0.4.1
 //The .txt file contains the exact same information that was output by the "pip freeze" command.  If I wanted to install all four of these packages in the Desktop directory at one time, I would use "pip install -r requirements.txt".
 
 
+
+RUN THE FOLLOWING COMMAND:
+
     pip uninstall Django
 
 SHORT EXPLANATION:  This code uninstalls the Django package from the virtual environment, but the other three packages which were installed with it remain.
@@ -113,6 +131,9 @@ SHORT EXPLANATION:  This code uninstalls the Django package from the virtual env
 OUTPUT:
 Successfully uninstalled Django-3.2.7
 
+
+
+RUN THE FOLLOWING COMMAND:
 
     pip show Django
 
@@ -133,6 +154,3 @@ License: BSD
 Location: /Users/michaelsduwors/Desktop/OneDrive/CODING DOJO/PythonStack/MyEnvironments/py3Env/lib/python3.8/site-packages
 Requires: pytz, sqlparse
 Required-by: 
-
-
-
